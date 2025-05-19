@@ -1,6 +1,9 @@
 package Week1;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
 
 public class Main {
 
@@ -27,11 +30,8 @@ public class Main {
 
                 case "2":
                     int size = readInt(scanner, "Enter size of array: ");
-                    int[] arr = new int[size];
-                    Random rand = new Random();
-                    for (int i = 0; i < size; i++) {
-                        arr[i] = rand.nextInt(10);
-                    }
+                    int bound = 10; // Giới hạn số ngẫu nhiên từ 0 đến 9
+                    int[] arr = Assignment2_LinearSearch.generateRandomArray(size, bound);
 
                     int target = readInt(scanner, "Enter search value: ");
                     System.out.print("The array: ");
@@ -136,7 +136,7 @@ public class Main {
         }
     }
 
-    // ------- HÀM DÙNG CHUNG (AN TOÀN) --------
+    // Các hàm đọc số và kiểm tra giá trị nhập vào
     private static int readInt(Scanner scanner, String prompt) {
         while (true) {
             System.out.print(prompt);
