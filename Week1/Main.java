@@ -127,7 +127,7 @@ public class Main {
                     break;
 
                 case "5":
-                    System.out.println("Goodbye!");
+                    System.out.println("End.");
                     return;
 
                 default:
