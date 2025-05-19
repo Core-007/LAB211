@@ -17,7 +17,7 @@ public class Assignment2_LinearSearch {
         int[] arr = new int[size];
         Random rand = new Random();
         for (int i = 0; i < size; i++) {
-            arr[i] = rand.nextInt(bound); // Sinh số ngẫu nhiên trong phạm vi từ 0 đến bound-1
+            arr[i] = rand.nextInt(bound); 
         }
         return arr;
     }
