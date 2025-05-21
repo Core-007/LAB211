@@ -3,12 +3,12 @@ package Week1;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Assignment4_EquationSolver {
+public class EquationSolver {
 
     public static List<Float> solveSuperlative(float a, float b) {
         if (a == 0) {
-            if (b == 0) return new ArrayList<>(); // vô số nghiệm
-            return null; // vô nghiệm
+            if (b == 0) return new ArrayList<>(); 
+            return null; 
         }
         List<Float> result = new ArrayList<>();
         result.add(-b / a);
