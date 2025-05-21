@@ -1,0 +1,43 @@
+package Week1;
+
+import java.util.Scanner;
+
+public class Validator {
+
+    public static int readPositiveInt(Scanner scanner, String prompt) {
+        while (true) {
+            System.out.print(prompt);
+            try {
+                int val = Integer.parseInt(scanner.nextLine());
+                if (val > 0) return val;
+                System.out.println("Please enter a positive integer.");
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Try again.");
+            }
+        }
+    }
+
+    public static float readFloat(Scanner scanner, String prompt) {
+        while (true) {
+            System.out.print(prompt);
+            try {
+                return Float.parseFloat(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid number. Try again.");
+            }
+        }
+    }
+
+    public static int readBase(Scanner scanner, String prompt) {
+        while (true) {
+            System.out.print(prompt);
+            try {
+                int base = Integer.parseInt(scanner.nextLine());
+                if (base == 2 || base == 10 || base == 16) return base;
+                System.out.println("Base must be 2, 10 or 16.");
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input.");
+            }
+        }
+    }
+}
