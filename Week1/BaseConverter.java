@@ -1,6 +1,6 @@
 package Week1;
 
-public class Assignment3_BaseConverter {
+public class BaseConverter {
     public static int toDecimal(String inputValue, int inputBase) throws NumberFormatException {
         return Integer.parseInt(inputValue, inputBase);
     }
