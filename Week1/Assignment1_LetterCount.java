@@ -2,7 +2,7 @@ package Week1;
 
 import java.util.HashMap;
 
-public class Assignment1_LetterCount {
+public class LetterCount {
 
     public static HashMap<String, Integer> countWords(String input) {
         HashMap<String, Integer> wordCount = new HashMap<>();
