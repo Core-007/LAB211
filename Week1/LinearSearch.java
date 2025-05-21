@@ -2,7 +2,7 @@ package Week1;
 
 import java.util.Random;
 
-public class Assignment2_LinearSearch {
+public class LinearSearch {
 
     // Phương thức tìm kiếm tuyến tính
     public static int search(int[] array, int target) {
