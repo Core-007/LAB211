@@ -1,6 +1,5 @@
 package Week1;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
@@ -11,7 +10,6 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
-            System.out.println("\n========= LAB211 Menu =========");
             System.out.println("1. Letter & Character Count");
             System.out.println("2. Linear Search");
             System.out.println("3. Base Converter");
@@ -24,20 +22,19 @@ public class Main {
                 case "1":
                     System.out.print("Enter your content: ");
                     String input = scanner.nextLine();
-                    System.out.println("Word count: " + Assignment1_LetterCount.countWords(input));
-                    System.out.println("Letter count: " + Assignment1_LetterCount.countLetters(input));
+                    System.out.println("Word count: " + LetterCount.countWords(input));
+                    System.out.println("Letter count: " + LetterCount.countLetters(input));
                     break;
 
                 case "2":
-                    int size = readInt(scanner, "Enter size of array: ");
-                    int bound = 10; // Giới hạn số ngẫu nhiên từ 0 đến 9
-                    int[] arr = Assignment2_LinearSearch.generateRandomArray(size, bound);
+                    int size = Validator.readPositiveInt(scanner, "Enter size of array: ");
+                    int[] arr = LinearSearch.generateRandomArray(size, 10);
 
-                    int target = readInt(scanner, "Enter search value: ");
+                    int target = Validator.readPositiveInt(scanner, "Enter search value: ");
                     System.out.print("The array: ");
                     System.out.println(Arrays.toString(arr));
 
-                    int index = Assignment2_LinearSearch.search(arr, target);
+                    int index = LinearSearch.search(arr, target);
                     if (index != -1) {
                         System.out.println("Found " + target + " at index: " + index);
                     } else {
@@ -46,15 +43,14 @@ public class Main {
                     break;
 
                 case "3":
-                    int inBase = readBase(scanner, "Choose input base (2, 10, 16): ");
+                    int inBase = Validator.readBase(scanner, "Choose input base (2, 10, 16): ");
                     System.out.print("Enter value: ");
                     String value = scanner.nextLine();
-
-                    int outBase = readBase(scanner, "Choose output base (2, 10, 16): ");
+                    int outBase = Validator.readBase(scanner, "Choose output base (2, 10, 16): ");
 
                     try {
-                        int decimal = Assignment3_BaseConverter.toDecimal(value, inBase);
-                        String result = Assignment3_BaseConverter.fromDecimal(decimal, outBase);
+                        int decimal = BaseConverter.toDecimal(value, inBase);
+                        String result = BaseConverter.fromDecimal(decimal, outBase);
                         System.out.println("Converted value: " + result);
                     } catch (NumberFormatException e) {
                         System.out.println("Invalid input for base " + inBase);
@@ -63,22 +59,19 @@ public class Main {
 
                 case "4":
                     while (true) {
-                        System.out.println("\n=== Equation Solver ===");
                         System.out.println("1. Solve Superlative (Ax + B = 0)");
                         System.out.println("2. Solve Quadratic (Ax^2 + Bx + C = 0)");
                         System.out.println("0. Return to main menu");
                         System.out.print("Choose sub-option: ");
                         String opt = scanner.nextLine().trim();
 
-                        if (opt.equals("0")) {
-                            break;
-                        }
+                        if (opt.equals("0")) break;
 
                         if (opt.equals("1")) {
-                            float a = readFloat(scanner, "Enter A: ");
-                            float b = readFloat(scanner, "Enter B: ");
+                            float a = Validator.readFloat(scanner, "Enter A: ");
+                            float b = Validator.readFloat(scanner, "Enter B: ");
 
-                            List<Float> result = Assignment4_EquationSolver.solveSuperlative(a, b);
+                            List<Float> result = EquationSolver.solveSuperlative(a, b);
 
                             if (result == null) {
                                 System.out.println("No solution.");
@@ -90,13 +83,13 @@ public class Main {
 
                             showProperties(a, b);
                         } else if (opt.equals("2")) {
-                            float a = readFloat(scanner, "Enter A: ");
-                            float b = readFloat(scanner, "Enter B: ");
-                            float c = readFloat(scanner, "Enter C: ");
+                            float a = Validator.readFloat(scanner, "Enter A: ");
+                            float b = Validator.readFloat(scanner, "Enter B: ");
+                            float c = Validator.readFloat(scanner, "Enter C: ");
 
                             if (a == 0) {
                                 System.out.println("Since A = 0, equation becomes linear: Bx + C = 0");
-                                List<Float> result = Assignment4_EquationSolver.solveSuperlative(b, c);
+                                List<Float> result = EquationSolver.solveSuperlative(b, c);
 
                                 if (result == null) {
                                     System.out.println("No solution.");
@@ -108,7 +101,7 @@ public class Main {
 
                                 showProperties(b, c);
                             } else {
-                                List<Float> result = Assignment4_EquationSolver.solveQuadratic(a, b, c);
+                                List<Float> result = EquationSolver.solveQuadratic(a, b, c);
 
                                 if (result == null) {
                                     System.out.println("No solution.");
@@ -127,53 +120,11 @@ public class Main {
                     break;
 
                 case "5":
-                    System.out.println("End.");
+                    System.out.println("End");
                     return;
 
                 default:
                     System.out.println("Invalid option.");
-            }
-        }
-    }
-
-    // Các hàm đọc số và kiểm tra giá trị nhập vào
-    private static int readInt(Scanner scanner, String prompt) {
-        while (true) {
-            System.out.print(prompt);
-            try {
-                int val = Integer.parseInt(scanner.nextLine());
-                if (val > 0) {
-                    return val;
-                }
-                System.out.println("Please enter a positive integer.");
-            } catch (NumberFormatException e) {
-                System.out.println("Invalid input. Try again.");
-            }
-        }
-    }
-
-    private static float readFloat(Scanner scanner, String prompt) {
-        while (true) {
-            System.out.print(prompt);
-            try {
-                return Float.parseFloat(scanner.nextLine());
-            } catch (NumberFormatException e) {
-                System.out.println("Invalid number. Try again.");
-            }
-        }
-    }
-
-    private static int readBase(Scanner scanner, String prompt) {
-        while (true) {
-            System.out.print(prompt);
-            try {
-                int base = Integer.parseInt(scanner.nextLine());
-                if (base == 2 || base == 10 || base == 16) {
-                    return base;
-                }
-                System.out.println("Base must be 2, 10 or 16.");
-            } catch (NumberFormatException e) {
-                System.out.println("Invalid input.");
             }
         }
     }
@@ -184,13 +135,13 @@ public class Main {
         StringBuilder square = new StringBuilder();
 
         for (float v : values) {
-            if (Assignment4_EquationSolver.isOdd(v)) {
+            if (EquationSolver.isOdd(v)) {
                 odd.append(v).append(", ");
             }
-            if (Assignment4_EquationSolver.isEven(v)) {
+            if (EquationSolver.isEven(v)) {
                 even.append(v).append(", ");
             }
-            if (Assignment4_EquationSolver.isPerfectSquare(v)) {
+            if (EquationSolver.isPerfectSquare(v)) {
                 square.append(v).append(", ");
             }
         }
