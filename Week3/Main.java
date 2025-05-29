@@ -10,7 +10,6 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
-            System.out.println("\n===== LAB211 - Week 3 Menu =====");
             System.out.println("1. Bubble Sort");
             System.out.println("2. Quick Sort");
             System.out.println("3. Binary Search");
