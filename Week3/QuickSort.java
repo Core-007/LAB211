@@ -2,7 +2,11 @@ package Week3;
 
 public class QuickSort {
 
-    public static void sort(int[] arr, int low, int high) {
+    public void sort(int[] arr) {
+        quickSort(arr, 0, arr.length - 1);
+    }
+
+    private void quickSort(int[] arr, int low, int high) {
         if (low >= high) return;
 
         int pivot = arr[(low + high) / 2];
@@ -20,7 +24,7 @@ public class QuickSort {
             }
         }
 
-        if (low < j) sort(arr, low, j);
-        if (i < high) sort(arr, i, high);
+        if (low < j) quickSort(arr, low, j);
+        if (i < high) quickSort(arr, i, high);
     }
 }
