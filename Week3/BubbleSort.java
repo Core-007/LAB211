@@ -2,7 +2,7 @@ package Week3;
 
 public class BubbleSort {
 
-    public static void sort(int[] arr) {
+    public void sort(int[] arr) {
         boolean swapped;
         int n = arr.length;
 
@@ -16,7 +16,7 @@ public class BubbleSort {
                     swapped = true;
                 }
             }
-            n--; // tối ưu: mỗi vòng lặp đưa phần tử lớn nhất về cuối
+            n--;
         } while (swapped);
     }
 }
