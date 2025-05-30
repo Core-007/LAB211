@@ -1,22 +1,18 @@
 package Week3;
 
-public class BubbleSort {
+public class BinarySearch {
 
-    public void sort(int[] arr) {
-        boolean swapped;
-        int n = arr.length;
+    public int search(int[] arr, int target) {
+        int left = 0, right = arr.length - 1;
 
-        do {
-            swapped = false;
-            for (int i = 1; i < n; i++) {
-                if (arr[i - 1] > arr[i]) {
-                    int temp = arr[i];
-                    arr[i] = arr[i - 1];
-                    arr[i - 1] = temp;
-                    swapped = true;
-                }
-            }
-            n--;
-        } while (swapped);
+        while (left <= right) {
+            int mid = (left + right) / 2;
+
+            if (arr[mid] == target) return mid;
+            else if (arr[mid] < target) left = mid + 1;
+            else right = mid - 1;
+        }
+
+        return -1;
     }
 }
