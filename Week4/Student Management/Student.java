@@ -1,29 +1,27 @@
-package Week4.StudentManagement;
-
 public class Student {
     private String id;
-    private String name;
+    private String studentName;
     private String semester;
-    private String course;
+    private String courseName;
 
-    public Student(String id, String name, String semester, String course) {
+    public Student(String id, String studentName, String semester, String courseName) {
         this.id = id;
-        this.name = name;
+        this.studentName = studentName;
         this.semester = semester;
-        this.course = course;
+        this.courseName = courseName;
     }
 
     public String getId() { return id; }
-    public String getName() { return name; }
+    public String getStudentName() { return studentName; }
     public String getSemester() { return semester; }
-    public String getCourse() { return course; }
+    public String getCourseName() { return courseName; }
 
-    public void setName(String name) { this.name = name; }
+    public void setStudentName(String studentName) { this.studentName = studentName; }
     public void setSemester(String semester) { this.semester = semester; }
-    public void setCourse(String course) { this.course = course; }
+    public void setCourseName(String courseName) { this.courseName = courseName; }
 
     @Override
     public String toString() {
-        return name + " | " + semester + " | " + course;
+        return id + " | " + studentName + " | " + semester + " | " + courseName;
     }
 }
