@@ -1,43 +1,56 @@
-package Week4.PersonManagement;
-
-import java.time.Year;
-import java.util.Scanner;
-
 public class Person {
-    protected String id, fullName, phone, major;
+    protected String ID;
+    protected String fullname;
+    protected String phoneNumber;
     protected int yearOfBirth;
+    protected String major;
 
     public Person() {
-        id = fullName = phone = major = "";
-        yearOfBirth = 0;
+        this.ID = "";
+        this.fullname = "";
+        this.phoneNumber = "";
+        this.yearOfBirth = 0;
+        this.major = "";
     }
 
-    public void inputAll(Scanner sc) {
-        System.out.print("ID (6 digits): ");
-        id = sc.nextLine();
-        if (!id.matches("\\d{6}")) throw new IllegalArgumentException("Data input is invalid");
-
-        System.out.print("Full name: ");
-        fullName = sc.nextLine();
-        if (!fullName.matches("[a-zA-Z ]+")) throw new IllegalArgumentException("Data input is invalid");
-
-        System.out.print("Phone (12 digits): ");
-        phone = sc.nextLine();
-        if (!phone.matches("\\d{12}")) throw new IllegalArgumentException("Data input is invalid");
-
-        System.out.print("Year of birth: ");
-        yearOfBirth = Integer.parseInt(sc.nextLine());
-        if (yearOfBirth >= Year.now().getValue()) throw new IllegalArgumentException("Data input is invalid");
-
-        System.out.print("Major: ");
-        major = sc.nextLine();
-        if (major.length() > 30) throw new IllegalArgumentException("Data input is invalid");
+    // Getters and Setters
+    public String getID() {
+        return ID;
     }
 
-    public String getFullName() { return fullName; }
-    public int getYearOfBirth() { return yearOfBirth; }
+    public String getFullname() {
+        return fullname;
+    }
 
-    public void printBasic() {
-        System.out.printf("%s - %s - %s - %d - %s\n", id, fullName, phone, yearOfBirth, major);
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public int getYearOfBirth() {
+        return yearOfBirth;
+    }
+
+    public String getMajor() {
+        return major;
+    }
+
+    public void setID(String ID) {
+        this.ID = ID;
+    }
+
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public void setYearOfBirth(int yearOfBirth) {
+        this.yearOfBirth = yearOfBirth;
+    }
+
+    public void setMajor(String major) {
+        this.major = major;
     }
 }
