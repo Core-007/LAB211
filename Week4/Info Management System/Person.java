@@ -1,3 +1,4 @@
+//lớp cha Person
 public class Person {
     protected String ID;
     protected String fullname;
