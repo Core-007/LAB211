@@ -1,14 +1,46 @@
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        Shape[] shapes = new Shape[6];
-        shapes[0] = new Circle(5);       // Hình tròn với bán kính 5
-        shapes[1] = new Square(4);       // Hình vuông với cạnh 4
-        shapes[2] = new Triangle(6, 8);  // Hình tam giác với đáy 6 và chiều cao 8
-        shapes[3] = new Sphere(3);       // Hình cầu với bán kính 3
-        shapes[4] = new Cube(4);         // Hình lập phương với cạnh 4
-        shapes[5] = new Tetrahedron(5);  // Hình tứ diện với cạnh 5
+        Scanner scanner = new Scanner(System.in);
 
-        // Xử lý mảng shapes
+        // Mảng chứa các đối tượng Shape
+        Shape[] shapes = new Shape[6];
+
+        // Nhập thông tin cho các hình học
+        System.out.println("Enter details for Circle:");
+        System.out.print("Enter radius: ");
+        double radius = scanner.nextDouble();
+        shapes[0] = new Circle(radius);  // Hình tròn với bán kính nhập từ người dùng
+
+        System.out.println("Enter details for Square:");
+        System.out.print("Enter side length: ");
+        double side = scanner.nextDouble();
+        shapes[1] = new Square(side);  // Hình vuông với cạnh nhập từ người dùng
+
+        System.out.println("Enter details for Triangle:");
+        System.out.print("Enter base length: ");
+        double base = scanner.nextDouble();
+        System.out.print("Enter height: ");
+        double height = scanner.nextDouble();
+        shapes[2] = new Triangle(base, height);  // Hình tam giác với đáy và chiều cao nhập từ người dùng
+
+        System.out.println("Enter details for Sphere:");
+        System.out.print("Enter radius: ");
+        radius = scanner.nextDouble();
+        shapes[3] = new Sphere(radius);  // Hình cầu với bán kính nhập từ người dùng
+
+        System.out.println("Enter details for Cube:");
+        System.out.print("Enter side length: ");
+        side = scanner.nextDouble();
+        shapes[4] = new Cube(side);  // Hình lập phương với cạnh nhập từ người dùng
+
+        System.out.println("Enter details for Tetrahedron:");
+        System.out.print("Enter edge length: ");
+        double edgeLength = scanner.nextDouble();
+        shapes[5] = new Tetrahedron(edgeLength);  // Hình tứ diện với cạnh nhập từ người dùng
+
+        // Hiển thị thông tin về các hình học
         for (Shape shape : shapes) {
             System.out.println("Shape: " + shape.getClass().getSimpleName());
             if (shape instanceof TwoDimensionalShape) {
@@ -19,5 +51,7 @@ public class Main {
             }
             System.out.println();
         }
+
+        scanner.close();
     }
 }
