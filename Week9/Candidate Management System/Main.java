@@ -76,12 +76,102 @@ public class Main {
     }
 
     private static void createFresher(Scanner sc, CandidateManager manager) {
-        // Tương tự createExperience, thay đổi theo Fresher
+    while (true) {
+        System.out.print("Enter Candidate ID: ");
+        String id = sc.nextLine();
+        System.out.print("First Name: ");
+        String firstName = sc.nextLine();
+        System.out.print("Last Name: ");
+        String lastName = sc.nextLine();
+        System.out.print("Birth Year: ");
+        String birthDate = sc.nextLine();
+        while (!Validation.isValidBirthYear(birthDate)) {
+            System.out.print("Invalid year. Try again: ");
+            birthDate = sc.nextLine();
+        }
+        System.out.print("Address: ");
+        String address = sc.nextLine();
+        System.out.print("Phone: ");
+        String phone = sc.nextLine();
+        while (!Validation.isValidPhone(phone)) {
+            System.out.print("Invalid phone. Try again: ");
+            phone = sc.nextLine();
+        }
+        System.out.print("Email: ");
+        String email = sc.nextLine();
+        while (!Validation.isValidEmail(email)) {
+            System.out.print("Invalid email. Try again: ");
+            email = sc.nextLine();
+        }
+
+        System.out.print("Graduation Date: ");
+        String graduationDate = sc.nextLine();
+        System.out.print("Graduation Rank (Excellence, Good, Fair, Poor): ");
+        String graduationRank = sc.nextLine();
+        while (!Validation.isValidRank(graduationRank)) {
+            System.out.print("Invalid rank. Try again: ");
+            graduationRank = sc.nextLine();
+        }
+        System.out.print("Education (University): ");
+        String education = sc.nextLine();
+
+        manager.addCandidate(new Fresher(id, firstName, lastName, birthDate, address,
+                phone, email, 1, graduationDate, graduationRank, education));
+
+        System.out.print("Do you want to continue (Y/N)? ");
+        if (!sc.nextLine().equalsIgnoreCase("Y")) break;
     }
 
-    private static void createIntern(Scanner sc, CandidateManager manager) {
-        // Tương tự createExperience, thay đổi theo Intern
+    manager.displayGroupedCandidates();
+}
+
+
+   private static void createIntern(Scanner sc, CandidateManager manager) {
+    while (true) {
+        System.out.print("Enter Candidate ID: ");
+        String id = sc.nextLine();
+        System.out.print("First Name: ");
+        String firstName = sc.nextLine();
+        System.out.print("Last Name: ");
+        String lastName = sc.nextLine();
+        System.out.print("Birth Year: ");
+        String birthDate = sc.nextLine();
+        while (!Validation.isValidBirthYear(birthDate)) {
+            System.out.print("Invalid year. Try again: ");
+            birthDate = sc.nextLine();
+        }
+        System.out.print("Address: ");
+        String address = sc.nextLine();
+        System.out.print("Phone: ");
+        String phone = sc.nextLine();
+        while (!Validation.isValidPhone(phone)) {
+            System.out.print("Invalid phone. Try again: ");
+            phone = sc.nextLine();
+        }
+        System.out.print("Email: ");
+        String email = sc.nextLine();
+        while (!Validation.isValidEmail(email)) {
+            System.out.print("Invalid email. Try again: ");
+            email = sc.nextLine();
+        }
+
+        System.out.print("Majors: ");
+        String majors = sc.nextLine();
+        System.out.print("Semester: ");
+        String semester = sc.nextLine();
+        System.out.print("University Name: ");
+        String university = sc.nextLine();
+
+        manager.addCandidate(new Intern(id, firstName, lastName, birthDate, address,
+                phone, email, 2, majors, semester, university));
+
+        System.out.print("Do you want to continue (Y/N)? ");
+        if (!sc.nextLine().equalsIgnoreCase("Y")) break;
     }
+
+    manager.displayGroupedCandidates();
+}
+
 
     private static void searchCandidate(Scanner sc, CandidateManager manager) {
         manager.displayGroupedCandidates();
